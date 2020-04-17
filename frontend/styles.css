@@ -1,0 +1,37 @@
+#header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 70px;
+    width: 100%;
+    box-shadow: 5px 5px 5px lightgray;
+}
+
+.headerleft{
+    font-family: 'Montserrat', sans-serif;
+    padding-left: 10px;
+    top: 50%;
+    color: red;
+    float: left;
+}
+
+.headerright{
+    font-family: 'Montserrat', sans-serif;
+    padding-right:10px;
+    color: red;
+    float:right;
+}
+
+#body{
+    background-color: #ddd;
+    float:center;
+}
+
+#footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #228B22;
+    float:center;
+}
