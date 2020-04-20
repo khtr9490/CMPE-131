@@ -39,10 +39,16 @@ if ($stmt->num_rows > 0) {
 		$_SESSION['id'] = $admin_id;
 		header("Location: admin/index.php"); // Redirecting To Home Page
 	} else {
-		header("Location: emp-login.php");
+		echo "<script>
+			alert('Incorrect username or password');
+			window.location.href='emp-login.php';
+			</script>";
 	}
 } else {
-	header("Location: emp_login.php");
+	echo "<script>
+			alert('Incorrect username or password');
+			window.location.href='emp-login.php';
+			</script>";
 }
 
 	$stmt->close();
