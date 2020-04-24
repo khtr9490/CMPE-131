@@ -29,11 +29,10 @@
 }
 
 .register_tile {
-    height: 600px;
+    height: 800px;
     width: 98;
     align-content: center;
     background-color: white;
-    border-top: 20px solid #EEE;
     border-bottom: 20px solid #EEE;
 }
 
