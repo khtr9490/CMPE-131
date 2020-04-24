@@ -1,16 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
 body {
   background: rgb(58, 58, 58);
-  color: white;
+  color: #141414;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  
 }
 
 /* HEADER */
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
 
-header {
+.header {
+    width: 100%;
+    height: 80px;
+    display: block;
+    background-color: #141414;
+}
+
+.inner_header {
+    width: 75%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.logo_container {
+    height: 100%;
+    display: table;
+    float: left;
+}
+
+.logo_container a {
+    color: white;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    font-family: 'Montserrat';
+    font-size: 32px;
+    font-weight: 200;
+}
+
+.logo_container a:hover {
+    color: #BBB;
+}
+
+.logo_container a span {
+    font-weight: 800;
+}
+
+.hamburger_button {
+    float: left;
+    height: 100%;
+    margin-top: 20px;
+    margin-right: 5px;
+}
+
+.hamburger_button img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.search_bar input[type=text] {
+    float:left;
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 100px;
+    width: 500px;
+    
+}
+
+.navigation {
+    float: right;
+    height: 100%;
+}
+
+.navigation a {
+    height: 100%;
+    display: table;
+    float: left;
+    padding: 0px 20px;
+}
+
+.navigation a li:hover {
+    color: #BBB;
+}
+
+.navigation a:last-child {
+    padding-right: 20px;
+}
+
+.navigation a li {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    color: white;
+    font-family: 'Montserrat';
+    font-size: 16px;
+}
+
+
+/*header {
   background-color: black;
-  background-image: url("/img/Logo.jpg");
+  background-image: url("../img/Logo.jpg");
   background-size: 100%;
   background-position: center;
   height: 400px;
@@ -45,9 +147,78 @@ nav ul {
 nav li {
   display: inline-block;
   margin-right: 20px;
-}
+}*/
 
 /* FEATURES */
+
+.home_content {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #EEE;
+}
+
+.inner_home_content {
+    width: 75%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.large_image {
+    width: 100%;
+    max-height: 100%;
+    display: block;
+    overflow: hidden;
+    border-bottom: 20px solid #EEE;
+    
+    padding-top: 0;
+    margin: 0;
+}
+
+.home_popular_items {
+    height: 400px;
+    width: 98;
+    border-bottom: 20px solid #EEE;
+    align-content: center;
+    background-color: white;
+}
+
+.home_popular_items_title {
+    padding: 20px;
+    font-family: 'Montserrat';
+    font-weight: 800;
+    font-size: 32px;
+}
+
+.home_cart {
+    height: 400px;
+    width: 98;
+    align-content: center;
+    background-color: white;
+    border-bottom: 20px solid #EEE;
+}
+
+.home_cart_title {
+    padding: 20px;
+    font-family: 'Montserrat';
+    font-weight: 800;
+    font-size: 32px;
+}
+
+.home_categories {
+    height: 400px;
+    width: 98;
+    align-content: center;
+    background-color: white;
+    border-bottom: 20px solid #EEE;
+}
+.home_categories_title {
+    padding: 20px;
+    font-family: 'Montserrat';
+    font-weight: 800;
+    font-size: 32px;
+}
 
 .features {
   background: white;
@@ -73,10 +244,32 @@ nav li {
 
 /* FOOTER */
 
-footer {
-  background: black;
-  color: gray;
-  font-size: 12px;
-  padding: 20px 20px;
-  text-align: center;
+.footer {
+    width: 100%;
+    height: 60px;
+    left: 0;
+    bottom: 0;
+    display: block;
+    background-color: #141414;
+    text-align: center;
 }
+
+.inner_footer {
+    width: 75%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    background-color: #141414;
+    text-align: center;
+}
+
+.inner_footer a {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    color: #BBB;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+

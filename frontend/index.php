@@ -2,10 +2,31 @@
 <html>
 <head>
   <title>Online Food Store</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="styles.css">
 <head>
 <body>
-<header>
+  <div class="header";>
+    <div class="inner_header";>
+       <div class="hamburger_button">
+         <img src="../img/menu-white.svg">
+        </div>
+        
+       <div class="logo_container">
+         <a href="index.php"><span>ONLINE</span>FOODSTORE</a>
+        </div>
+       
+       <div class="search_bar">
+         <input type="text" placeholder="Search..">
+        </div>
+       
+       <ul class="navigation">
+          <a href="login.php"><li>LOGIN/REGISTER</li></a>
+          <a href="cart.php"><li>CART</li></a>
+        </ul>
+    </div>
+  </div>
+<!--<header>
     <nav>
       <ul>
         <li><a href="index.php">Home</a></li>
@@ -15,26 +36,40 @@
         <li><a href="cart.html">Cart</a></li>
       </ul>
     </nav>
-  </header>
-  <section class="features">
-    <figure>
-        <img src="/img/Features/AllCategories.jpg" alt="Categories">
-        <figcaption>All Categories</figcaption>
-      </figure>
-      <figure>
-          <img src="/img/Features/Product.jpg" alt="Product">
-          <figcaption>Product</figcaption>
-        </figure>
-        <figure>
-            <img src="/img/Features/Profile.jpg" alt="Profile">
-            <figcaption>Profile</figcaption>
-          </figure>
-  </section>
+  </header>-->
 
-  <footer>
-    123 Main Street San Jose, CA • 408-111-2345 • OnlineFoodStore@me.com
-  </footer>
 
+  <div class="home_content";>
+        <div class="inner_home_content";>
+        <img class='large_image' src="../img/cropfield.jpg">
+        
+        <div class="home_popular_items";>
+            <div class="home_popular_items_title";>
+                <a>Popular Items</a>
+            </div>
+        </div>
+
+        <div class="home_cart";>
+            <div class="home_cart_title";>
+                <a>Your Cart</a>
+            </div>
+        </div>
+
+        <div class="home_categories";>
+            <div class="home_categories_title";>
+                <a>Categories</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+  <div class="footer";>
+    <div class="inner_footer";>
+      <a>123 Main Street San Jose, CA • 408-111-2345 • OnlineFoodStore@me.com</a>
+    </div>
+</div>
 </body>
 
 </html>
