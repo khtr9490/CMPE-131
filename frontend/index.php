@@ -13,7 +13,7 @@
         </div>
         
        <div class="logo_container">
-         <a href="index.php"><span>ONLINE</span>FOODSTORE</a>
+         <a href="index.php"><span>FOOD</span>MART</a>
         </div>
        
        <div class="search_bar">
