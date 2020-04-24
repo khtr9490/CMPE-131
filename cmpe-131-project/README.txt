@@ -12,6 +12,8 @@ SQL query in the file.
 - authenticate.php is use to verify the username and password for
 login.
 
+- contact "Khoi Tran" on discord for questions and concerns.
+
 ***********************************************************************
 How to create the database.
  - login to http://localhost/phpmyadmin/

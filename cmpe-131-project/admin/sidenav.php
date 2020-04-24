@@ -17,7 +17,7 @@
 
 <body class="dark-edition">
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="black" data-image="./assets/img/sidebar-2.jpg">
+    <div class="sidebar" data-color="purple" data-background-color="black" data-image="./assets/img/sjsu.jpg">
       <!--
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -31,15 +31,15 @@
       <div class="sidebar-wrapper ps-container ps-theme-default" data-ps-id="3a8db1f4-24d8-4dbf-85c9-4f5215c1b29a">
         <ul class="nav">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">
+            <a class="nav-link" href="orders.php">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="adduser.php">
+            <a class="nav-link" href="addemp.php">
               <i class="material-icons">person</i>
-              <p>Add User</p>
+              <p>Add Employee</p>
             </a>
           </li>
           <li class="nav-item">
@@ -49,13 +49,6 @@
             </a>
             
           </li>
-          
-          <li class="nav-item ">
-            <a class="nav-link" href="orders.php">
-              <i class="material-icons">library_books</i>
-              <p>Orders</p>
-            </a>
-          </li>
           <li class="nav-item ">
             <a class="nav-link" href="addproduct.php">
               <i class="material-icons">add</i>
@@ -63,9 +56,9 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="manageuser.php">
+            <a class="nav-link" href="manageemp.php">
               <i class="material-icons">edit_user</i>
-              <p>Manage User</p>
+              <p>Manage Employee</p>
             </a>
           </li>
           <li class="nav-item ">

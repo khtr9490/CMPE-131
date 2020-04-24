@@ -1,9 +1,9 @@
-<?php
+ <?php
 // We need to use sessions, so you should always start sessions using the below code.
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: ../user_login.php');
+	header('Location: ../emp-login.php');
 	exit;
 }
 include("../db.php");
@@ -103,13 +103,13 @@ include "topheader.php";
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Product Category</label>
-                        <input type="number" id="product_type" name="product_type" required="[1-6]" class="form-control">
+                        <input type="text" id="product_type" name="product_type" required="[1-6]" class="form-control">
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="">Product Brand</label>
-                        <input type="number" id="brand" name="brand" required class="form-control">
+                        <input type="text" id="brand" name="brand" required class="form-control">
                       </div>
                     </div>
                      
