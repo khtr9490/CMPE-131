@@ -13,7 +13,7 @@
         </div>
         
        <div class="logo_container">
-         <h1><span>ONLINE</span>FOODSTORE</h1>
+         <a href="index.php"><span>ONLINE</span>FOODSTORE</a>
         </div>
        
        <div class="search_bar">
@@ -21,8 +21,8 @@
         </div>
        
        <ul class="navigation">
-          <a><li>LOGIN/REGISTER</li></a>
-          <a><li>CART</li></a>
+          <a href="login.php"><li>LOGIN/REGISTER</li></a>
+          <a href="cart.php"><li>CART</li></a>
         </ul>
     </div>
   </div>
