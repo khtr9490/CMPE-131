@@ -92,6 +92,7 @@ CREATE TABLE `products` (
 
 CREATE TABLE `user_info` (
   `user_id` int(10) NOT NULL,
+  `user_name` varchar(100) NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
   `email` varchar(300) NOT NULL,
@@ -135,7 +136,7 @@ ALTER TABLE `products`
 -- Indexes for table `user_info`
 --
 ALTER TABLE `user_info`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`, `user_name`);
 
 --
 -- AUTO_INCREMENT for dumped tables
