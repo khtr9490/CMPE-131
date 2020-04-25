@@ -1,5 +1,5 @@
 *NOTE*
-- Admin user and pass: admin / 123456
+- Admin user and pass: admin / 1234
 
 - Added more tables to DB. "Order" tables is missing so homepage will show error.
 
