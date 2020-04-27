@@ -6,6 +6,9 @@
 -- Generation Time: Apr 27, 2020 at 03:03 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
+CREATE DATABASE ecommerece;
+
+USE ecommerece;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
