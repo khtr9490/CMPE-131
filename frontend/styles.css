@@ -271,5 +271,15 @@ nav li {
     text-align: center;
 }
 
+.container
+{
+	width: 100%;
+}
 
-
+.col-md-3
+{
+	display: block; 
+	display: inline-block; 
+	margin-left: auto;
+	margin-right: auto;
+}

@@ -1,12 +1,6 @@
 <?php
   session_start();
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $db = "ecommerece";
-
-  // Create connection
-  $con = mysqli_connect($servername, $username, $password,$db);
+  include("../db.php");
 
   if(isset($_POST["add"])){
     if(isset($_SESSION["cart"])){
@@ -97,7 +91,7 @@
                 <a>Popular Items</a>
 <!---PHP code for the items display--------->
 
-                <div class="container" style="width: 65%";>
+                <div class="container">
                 <?php
                   $query = "SELECT * FROM products ORDER BY product_id ASC";
                   $result = mysqli_query($con, $query)or die("Error: ". mysql_error(). " with query ");
@@ -105,7 +99,7 @@
 
                     while($row = mysqli_fetch_array($result)) {
                        ?>
-                       <div class = "col-md-3" style="float: left;">
+                       <div class = "col-md-3">
                          <form method="post" action="index.php?action=add&id=<?php echo $row["product_id"]; ?>">
                            <div class = "product">
                              <img src="<?php echo $row["product_image"]; ?>" width="50" height="40" class="img-responsive">
