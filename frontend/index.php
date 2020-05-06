@@ -10,6 +10,7 @@
         $item_array = array(
           'product_id' => $_GET["id"],
           'item_name' =>$_POST["hidden_name"],
+          'item_weight' =>$_POST["hidden_weight"],
           'product_price' => $_POST["hidden_price"],
           'item_quantity' => $_POST["quantity"],
         );
@@ -23,6 +24,7 @@
       $item_array = array(
         'product_id' => $_GET["id"],
         'item_name' =>$_POST["hidden_name"],
+        'item_weight' =>$_POST["hidden_weight"],
         'product_price' => $_POST["hidden_price"],
         'item_quantity' => $_POST["quantity"],
       );
@@ -115,6 +117,7 @@
                              <h5 class="text-danger"> <?php echo $row["product_price"]; ?> </h5>
                              <input type="text" name="quantity" class="form-control" value="1" >
                              <input type="hidden" name="hidden_name" value="<?php echo $row["product_title"]; ?>">
+                             <input type="hidden" name="hidden_weight" value="<?php echo $row["weight"]; ?>">
                              <input type="hidden" name="hidden_price" value="<?php echo $row["product_price"]; ?>">
                              <input type="submit" name="add" style="margin-top: 5px;" class="btn btn-success" value="Add to Cart">
 
@@ -143,6 +146,7 @@
               <tr>
                 <th width="30%">Product Name</th>
                 <th width="10%">Quantity</th>
+                <th width="15%">Weight</th>
                 <th width="13%">Price Details</th>
                 <th width="10%">Total Price</th>
                 <th widht="17%">Remove Item</th>
@@ -152,22 +156,27 @@
               <?php
                  if(!empty($_SESSION["cart"])) {
                    $total = 0;
+                   $total_weight = 0;
                    foreach($_SESSION["cart"] as $key => $value) {
                      ?>
                      <tr>
                        <td><?php echo $value["item_name"];?></td>
                        <td><?php echo $value["item_quantity"];?></td>
+                       <td><?php echo $value["item_weight"];?> pounds</td>
                        <td>$<?php echo $value["product_price"];?></td>
                        <td>$<?php echo number_format($value["item_quantity"] * $value["product_price"], 2); ?></td>
                        <td><a href="cart.php?action=delete&id=<?php echo $value["product_id"]; ?>"><span class="text-danger">Remove Item</span></a></td>
                      </tr>
                      <?php
                      $total = $total + ($value["item_quantity"] * $value["product_price"]);
+                     $total_weight = $total_weight + ($value["item_quantity"] * $value["item_weight"]);
                    }
                       ?>
 
                       <tr>
-                        <td colspan="3" align="right">Total</td>
+                        <td colspan="2" align="right">Total</td>
+                        <th alight="right"> <?php echo $total_weight; ?> pounds</th>
+                        <td colspan="1" align="right">Total</td>
                         <th alight="right">$ <?php echo number_format($total, 2); ?></th>
                         <td ></td>
                       </tr>
@@ -192,7 +201,7 @@
 
   <div class="footer";>
     <div class="inner_footer";>
-      <a>123 Main Street San Jose, CA • 408-111-2345 • OnlineFoodStore@me.com</a>
+      <a>123 Main Street San Jose, CA • 408-111-2345 • OnlineFoodStore@me.com</a>
     </div>
 </div>
 </body>
