@@ -14,8 +14,9 @@
       if(!in_array($_GET["id"], $item_array_id)){
         $count = count($_SESSION["cart"]);
         $item_array = array(
-          'product_id' => $_GET["id"],
+          'product_id' => $_GET["product_id"],
           'item_name' =>$_POST["hidden_name"],
+          'item_weight' =>$_POST["hidden_weight"],
           'product_price' => $_POST["hidden_price"],
           'item_quantity' => $_POST["quantity"],
         );
@@ -29,6 +30,7 @@
       $item_array = array(
         'product_id' => $_GET["id"],
         'item_name' =>$_POST["hidden_name"],
+        'item_weight' =>$_POST["hidden_weight"],
         'product_price' => $_POST["hidden_price"],
         'item_quantity' => $_POST["quantity"],
       );
@@ -92,6 +94,7 @@
          <tr>
            <th width="30%">Product Name</th>
            <th width="10%">Quantity</th>
+           <th width="15%">Weight</th>
            <th width="13%">Price Details</th>
            <th width="10%">Total Price</th>
            <th widht="17%">Remove Item</th>
@@ -100,26 +103,46 @@
 
          <?php
             if(!empty($_SESSION["cart"])) {
+              $final_total = 0;
               $total = 0;
+              $taxes = 0;
+              $total_weight = 0;
               foreach($_SESSION["cart"] as $key => $value) {
                 ?>
                 <tr>
                   <td><?php echo $value["item_name"];?></td>
                   <td><?php echo $value["item_quantity"];?></td>
+                  <td><?php echo $value["item_weight"];?> pounds</td>
                   <td>$<?php echo $value["product_price"];?></td>
                   <td>$<?php echo number_format($value["item_quantity"] * $value["product_price"], 2); ?></td>
                   <td><a href="cart.php?action=delete&id=<?php echo $value["product_id"]; ?>"><span class="text-danger">Remove Item</span></a></td>
                 </tr>
                 <?php
                 $total = $total + ($value["item_quantity"] * $value["product_price"]);
+                $taxes = ($total * 0.0725);
+                $final_total = $final_total + $taxes + ($value["item_quantity"] * $value["product_price"]);
+                $total_weight = $total_weight + ($value["item_quantity"] * $value["item_weight"]);
               }
                  ?>
 
                  <tr>
-                   <td colspan="3" align="right">Total</td>
-                   <th alight="right">$ <?php echo number_format($total, 2); ?></th>
+                   <td colspan="4" align="right">Total Weight</td>
+                   <th alight="right"> <?php echo $total_weight; ?> pounds</th>
                    <td ></td>
                  </tr>
+                 <tr>
+                   <td colspan="4" align="right">Total</td>
+                   <th alight="right">$ <?php echo number_format($total, 2); ?></th>
+                 </tr>
+                 <tr>
+                   <td colspan="4" align="right">Taxes</td>
+                   <th alight="right">$ <?php echo number_format($taxes, 2); ?></th>
+                 </tr>
+                 <tr>
+                   <td colspan="4" align="right">Final Total</td>
+                   <th alight="right">$ <?php echo number_format($final_total, 2); ?></th>
+                 </tr>
+
                  <?php
 
             }
@@ -127,6 +150,7 @@
         </table>
 
        </div>
+
      </div>
 
 </div>
