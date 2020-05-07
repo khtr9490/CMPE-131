@@ -435,7 +435,6 @@ include "header.php";
 
 		<!-- FOOTER -->
 <?php
-include "newslettter.php";
 include "footer.php";
 
 ?>
