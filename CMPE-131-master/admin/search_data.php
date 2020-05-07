@@ -33,7 +33,7 @@ if(!empty($orders)){
 	foreach($orders as $order){
 		echo '
 		<tr>
-		<td><img src='.$order["product_image"].' style="width:50px; height:50px; border:groove #000"></td>
+		<td><img src="../product_images/'.$order["product_image"].'" style="width:50px; height:50px; border:groove #000"></td>
 		<td>'.$order["product_title"].'</td>
 		<td>'.$order["product_cat"].'</td>
 		<td>$'.$order["product_price"].'</td>
