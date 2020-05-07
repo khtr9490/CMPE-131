@@ -114,7 +114,7 @@
                            <div class = "product">
                              <img src="<?php echo $row["product_image"]; ?>" width="50" height="40" class="img-responsive">
                              <h5 class="text-info"> <?php echo $row["product_title"]; ?></h5>
-                             <h5 class="text-danger"> <?php echo $row["product_price"]; ?> </h5>
+                             <h5 class="text-danger">$ <?php echo $row["product_price"]; ?> </h5>
                              <input type="text" name="quantity" class="form-control" value="1" >
                              <input type="hidden" name="hidden_name" value="<?php echo $row["product_title"]; ?>">
                              <input type="hidden" name="hidden_weight" value="<?php echo $row["weight"]; ?>">
