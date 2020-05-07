@@ -19,7 +19,7 @@
 		session_destroy();
 		echo "<script>
 			alert('You are now logged out.');
-			window.location.href='index.php';
+			window.location.href='../emp-login.php';
 			</script>";
 		mysqli_close($conn);
 	 ?>
