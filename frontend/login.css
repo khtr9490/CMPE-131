@@ -13,7 +13,7 @@
 }
 
 .login_tile {
-    height: 400px;
+    height: auto;
     width: 98;
     align-content: center;
     background-color: white;
@@ -29,7 +29,7 @@
 }
 
 .register_tile {
-    height: 800px;
+    height: auto;
     width: 98;
     align-content: center;
     background-color: white;
@@ -43,3 +43,36 @@
     font-size: 32px;
 }
 
+.password_title {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 24px;
+}
+
+u1.list{
+  list-style-type: none;
+  text-align: center;
+}
+/******
+  If you delete widtth: 250px it centers for some reason
+*/
+u1.list li{
+  /*
+  width: 250px;
+  */
+}
+
+u1.list li input{
+  width: 250px;
+  text-align: center;
+  padding: 8px 0px;
+  border: none;
+  background-color: #d3d3d3;
+  border-radius 5px;
+}
+
+u1.list li input [type="button"]{
+  background-color: #4690fb;
+  color: #fff;
+
+}
