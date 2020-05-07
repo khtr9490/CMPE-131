@@ -107,6 +107,7 @@
               $total = 0;
               $taxes = 0;
               $total_weight = 0;
+              $shipping = 0;
               foreach($_SESSION["cart"] as $key => $value) {
                 ?>
                 <tr>
@@ -120,8 +121,13 @@
                 <?php
                 $total = $total + ($value["item_quantity"] * $value["product_price"]);
                 $taxes = ($total * 0.0725);
-                $final_total = $final_total + $taxes + ($value["item_quantity"] * $value["product_price"]);
-                $total_weight = $total_weight + ($value["item_quantity"] * $value["item_weight"]);
+                $total_weight = ($value["item_quantity"] * $value["item_weight"]);
+
+                if($total_weight > 20) {
+                  $shipping = 5;
+                }
+                $final_total = $final_total + $taxes + $shipping + ($value["item_quantity"] * $value["product_price"]);
+
               }
                  ?>
 
@@ -135,6 +141,14 @@
                    <th alight="right">$ <?php echo number_format($total, 2); ?></th>
                  </tr>
                  <tr>
+                   <td colspan="4" align="right">Shipping</td>
+                   <th alight="right"> <?php if($total_weight >= 20) {
+                     echo "FREE";
+                   } else {
+                      echo "$5";
+                   } ?></th>
+                 </tr>
+                 <tr>
                    <td colspan="4" align="right">Taxes</td>
                    <th alight="right">$ <?php echo number_format($taxes, 2); ?></th>
                  </tr>
@@ -143,11 +157,35 @@
                    <th alight="right">$ <?php echo number_format($final_total, 2); ?></th>
                  </tr>
 
+
+
                  <?php
 
             }
           ?>
         </table>
+        <?php
+        $query = "SELECT * FROM products ORDER BY product_id ASC";
+        $result = mysqli_query($con, $query)or die("Error: ". mysql_error(). " with query ");
+         ?>
+
+        <?php
+        if(mysqli_num_rows($result) > 0) {
+         ?>
+
+        <div>
+          <a href="checkout.php"><center><button>Checkout</button></center></a>
+        </div>
+      <?php } else {
+        ?>
+        <div style="tex-align:center">
+          <p> <center>No Products Added In Cart </p>
+          <a href="index.php"><button>Buy Items</button></center></a>
+        </div>
+        <?php } ?>
+
+
+
 
        </div>
 
