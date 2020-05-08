@@ -4,7 +4,7 @@ include "db.php";
 include "header.php";
 
 
-                         
+
 ?>
 
 <style>
@@ -17,9 +17,9 @@ include "header.php";
   margin: 0 -16px;
 }
 
-.col-25 {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
+.col-35 {
+  -ms-flex: 35%; /* IE10 */
+  flex: 35%;
 }
 
 .col-50 {
@@ -27,14 +27,14 @@ include "header.php";
   flex: 50%;
 }
 
-.col-75 {
-  -ms-flex: 75%; /* IE10 */
-  flex: 75%;
+.col-60 {
+  -ms-flex: 60%; /* IE10 */
+  flex: 60%;
 }
 
-.col-25,
+.col-35,
 .col-50,
-.col-75 {
+.col-60 {
   padding: 0 16px;
 }
 
@@ -96,14 +96,14 @@ span.price {
   .row-checkout {
     flex-direction: column-reverse;
   }
-  .col-25 {
+  .col-35 {
     margin-bottom: 20px;
   }
 }
 </style>
 
-					
-<section class="section">       
+
+<section class="section">
 	<div class="container-fluid">
 		<div class="row-checkout">
 		<?php
@@ -111,14 +111,13 @@ span.price {
 			$sql = "SELECT * FROM user_info WHERE user_id='$_SESSION[uid]'";
 			$query = mysqli_query($con,$sql);
 			$row=mysqli_fetch_array($query);
-		
+
 		echo'
-			<div class="col-75">
+			<div class="col-60">
 				<div class="container-checkout">
 				<form id="checkout_form" action="checkout_process.php" method="POST" class="was-validated">
-
 					<div class="row-checkout">
-					
+
 					<div class="col-50">
 						<h3>Billing Address</h3>
 						<label for="fname"><i class="fa fa-user" ></i> Full Name</label>
@@ -129,7 +128,6 @@ span.price {
 						<input type="text" id="adr" name="address" class="form-control" value="'.$row["address1"].'" required>
 						<label for="city"><i class="fa fa-institution"></i> City</label>
 						<input type="text" id="city" name="city" class="form-control" value="'.$row["address2"].'" pattern="^[a-zA-Z ]+$" required>
-
 						<div class="row">
 						<div class="col-50">
 							<label for="state">State</label>
@@ -141,8 +139,8 @@ span.price {
 						</div>
 						</div>
 					</div>
-					
-					
+
+
 					<div class="col-50">
 						<h3>Payment</h3>
 						<label for="fname">Accepted Cards</label>
@@ -152,21 +150,20 @@ span.price {
 						<i class="fa fa-cc-mastercard" style="color:red;"></i>
 						<i class="fa fa-cc-discover" style="color:orange;"></i>
 						</div>
-						
-						
+
+
 						<label for="cname">Name on Card</label>
 						<input type="text" id="cname" name="cardname" class="form-control" pattern="^[a-zA-Z ]+$" required>
-						
+
 						<div class="form-group" id="card-number-field">
                         <label for="cardNumber">Card Number</label>
                         <input type="text" class="form-control" id="cardNumber" name="cardNumber" required>
                     </div>
 						<label for="expdate">Exp Date</label>
 						<input type="text" id="expdate" name="expdate" class="form-control" pattern="^((0[1-9])|(1[0-2]))\/(\d{2})$" placeholder="12/22"required>
-						
 
 						<div class="row">
-						
+
 						<div class="col-50">
 							<div class="form-group CVV">
 								<label for="cvv">CVV</label>
@@ -185,23 +182,25 @@ span.price {
 						$item_name_ = $_POST['item_name_'.$i];
 						$amount_ = $_POST['amount_'.$i];
 						$quantity_ = $_POST['quantity_'.$i];
+            $weight_ = $_POST['weight_'.$i];
 						$total=$total+$amount_ ;
 						$sql = "SELECT product_id FROM products WHERE product_title='$item_name_'";
 						$query = mysqli_query($con,$sql);
 						$row=mysqli_fetch_array($query);
 						$product_id=$row["product_id"];
-						echo "	
+						echo "
 						<input type='hidden' name='prod_id_$i' value='$product_id'>
 						<input type='hidden' name='prod_price_$i' value='$amount_'>
 						<input type='hidden' name='prod_qty_$i' value='$quantity_'>
+            <input type='hidden' name='prod_wght_$i' value='$weight_'>
 						";
 						$i++;
 					}
-					
-				echo'	
+
+				echo'
 				<input type="hidden" name="total_count" value="'.$total_count.'">
 					<input type="hidden" name="total_price" value="'.$total.'">
-					
+
 					<input type="submit" id="submit" value="Continue to checkout" class="checkout-btn">
 				</form>
 				</div>
@@ -212,64 +211,82 @@ span.price {
 		}
 		?>
 
-			<div class="col-25">
+			<div class="col-35">
 				<div class="container-checkout">
-				
+
 				<?php
 				if (isset($_POST["cmd"])) {
-				
+
 					$user_id = $_POST['custom'];
-					
-					
+
+
 					$i=1;
 					echo
 					"
-					<h4>Cart 
+					<h4>Cart
 					<span class='price' style='color:black'>
-					<i class='fa fa-shopping-cart'></i> 
+					<i class='fa fa-shopping-cart'></i>
 					<b>$total_count</b>
 					</span>
 				</h4>
-
 					<table class='table table-condensed'>
 					<thead><tr>
 					<th >no</th>
 					<th >product title</th>
+          <th >	weight</th>
 					<th >	qty	</th>
 					<th >	amount</th></tr>
 					</thead>
 					<tbody>
 					";
 					$total=0;
+          $total_amount=0;
+          $total_weight=0;
+          $delivery= 0;
+          $fee=0;
 					while($i<=$total_count){
 						$item_name_ = $_POST['item_name_'.$i];
-						
+
 						$item_number_ = $_POST['item_number_'.$i];
-						
+
 						$amount_ = $_POST['amount_'.$i];
-						
+
 						$quantity_ = $_POST['quantity_'.$i];
-						$total=$total+$amount_*$quantity_ ;
+            $weight_ = $_POST['weight_'.$i];
+            $total_weight=$total_weight+ ($weight_*$quantity_);
+            $total_amount=$amount_*$quantity_;
+            $total=$total+$total_amount;
+            $formatted_total = number_format($total, 2) + $fee;
+
+            if($total_weight < 20) {
+              $delivery = "$5.00 FEE";
+              $fee=5;
+
+            } else {
+              $delivery = "FREE";
+              $fee=0;
+
+            }
+
 						$sql = "SELECT product_id FROM products WHERE product_title='$item_name_'";
 						$query = mysqli_query($con,$sql);
 						$row=mysqli_fetch_array($query);
 						$product_id=$row["product_id"];
-					
-						echo "	
 
-						<tr><td><p>$item_number_</p></td><td><p>$item_name_</p></td><td ><p>$quantity_</p></td><td ><p>$amount_</p></td></tr>";
-						
+						echo "
+						<tr><td><p>$item_number_</p></td><td><p>$item_name_</p></td><td ><p>$weight_</p></td><td ><p>$quantity_</p></td><td ><p>$amount_</p></td></tr>";
+
 						$i++;
 					}
 
 				echo"
-
 				</tbody>
 				</table>
 				<hr>
-				
-				<h3>total<span class='price' style='color:black'><b>$$total</b></span></h3>";
-					
+
+        <h3>Weight:<span class='price' style='color:black'><b>$total_weight pounds</b></span></h3>
+        <h3>Delivery:<span class='price' style='color:black'><b>$delivery </b></span></h3>
+				<h3>Total:<span class='price' style='color:black'><b>$$formatted_total </b></span></h3>";
 				}
 				?>
 				</div>
@@ -277,7 +294,7 @@ span.price {
 		</div>
 	</div>
 </section>
-		
+
 <?php
 include "footer.php";
 ?>
